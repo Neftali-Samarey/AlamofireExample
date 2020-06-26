@@ -7,13 +7,35 @@
 //
 
 import UIKit
+import Alamofire
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        testNetworkCall()
     }
+    
+    func testNetworkCall() {
+        
+        let url = URL(string: "https://www.google.com")
+        
+        AF.request(url!).response { (result) in
+            //
+            let statusCode = result.response?.statusCode
+            if let statusIsValid = statusCode {
+                print("Status: \(statusIsValid)")
+            }
+        }
+        
+        
+    }
+    
+    
+    
+    
+    
+    
 
 
 }
